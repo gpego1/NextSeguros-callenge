@@ -1,6 +1,9 @@
 package com.example.nextseguros.model;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -10,6 +13,9 @@ import java.util.Date;
 @Entity
 @Table(name = "client")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Client {
 
     @Id

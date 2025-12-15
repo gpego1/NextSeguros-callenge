@@ -1,7 +1,9 @@
 package com.example.nextseguros.service;
+import com.example.nextseguros.dto.ClientDTO;
 import com.example.nextseguros.model.Client;
 import com.example.nextseguros.repository.ClientRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,19 +25,19 @@ public class ClientService {
         return repository.findById(id);
     }
 
-    public Client create(Client client) {
-        client.setCreatedAt(LocalDateTime.now());
-        client.setUpdatedAt(LocalDateTime.now());
+    public Client create(@Valid ClientDTO dto) {
+        Client client = dto.toEntity();
         return repository.save(client);
     }
 
     @Transactional
-    public Client update(Client client) {
-        if(!repository.existsById(client.getId())) {
-            throw new RuntimeException("Cannot find the cleint: "+ client.getName());
+    public Client update(Long id,@Valid ClientDTO dto) {
+        Client client = repository.findById(id).orElse(null);
+        if(client != null) {
+            Client updatedClient = dto.toEntityUpdate(client);
+            return repository.save(updatedClient);
         }
-        client.setUpdatedAt(LocalDateTime.now());
-        return repository.save(client);
+        return null;
     }
 
     @Transactional

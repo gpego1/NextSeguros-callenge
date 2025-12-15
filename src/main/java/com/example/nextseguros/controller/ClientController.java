@@ -1,6 +1,8 @@
 package com.example.nextseguros.controller;
+import com.example.nextseguros.dto.ClientDTO;
 import com.example.nextseguros.model.Client;
 import com.example.nextseguros.service.ClientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,35 +31,19 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Client createClient(@RequestBody Client client) {
-        return service.create(client);
+    public Client createClient(@RequestBody ClientDTO dto) {
+        return service.create(dto);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(value = HttpStatus.OK)
-    public Client updateClient(@PathVariable Long id, @RequestBody Client client) {
-        Optional<Client> optionalClient = service.getClientById(id);
-
-        if(optionalClient.isEmpty()){
-            throw new RuntimeException("Cannot find te client: " + client.getName());
-        }
-
-        Client updatedClient = optionalClient.get();
-        updatedClient.setName(client.getName());
-        updatedClient.setAge(client.getAge());
-        updatedClient.setIncome(client.getIncome());
-        updatedClient.setDependents(client.getDependents());
-        updatedClient.setCreatedAt(client.getCreatedAt());
-        updatedClient.setMarital_status(client.getMarital_status());
-        updatedClient.setCreatedAt(client.getCreatedAt());
-        return service.update(updatedClient);
+    public Client updateClient(@PathVariable Long id, @RequestBody @Valid ClientDTO dto) {
+        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void deleteClient(@PathVariable Long id) {
-        service.deleteById(id);
-    }
+    public void deleteClient(@PathVariable Long id) {service.deleteById(id);}
 
 
 
