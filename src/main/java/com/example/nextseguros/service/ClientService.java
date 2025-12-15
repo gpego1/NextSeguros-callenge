@@ -39,7 +39,7 @@ public class ClientService {
     }
 
     @Transactional
-    public void delete(Client client) {
-        repository.delete(client);
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }
