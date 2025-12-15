@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -24,15 +25,18 @@ public class Client {
     @Column(name = "dependents")
     private Integer dependents;
 
+    @Column(name = "income")
+    private Double income;
+
     @Column(name = "marital_status", length = 255)
-    private String maritaStatus;
+    private String marital_status;
 
-    @Column(name = "createdAt")
     @CreatedDate
-    private Date createdAt;
+    @Column(name = "createdAt")
+    private LocalDateTime createdAt;
 
-    @Column(name = "updatedAt")
     @LastModifiedDate
-    private Date updatedAt;
+    @Column(name = "updatedAt")
+    private LocalDateTime updatedAt;
 
 }
