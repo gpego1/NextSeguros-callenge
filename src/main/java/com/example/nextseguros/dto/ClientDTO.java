@@ -34,7 +34,6 @@ public class ClientDTO {
     private double income;
 
     @NotBlank
-    @Size
     private String marital_status;
 
     public Client toEntity() {

@@ -1,4 +1,5 @@
 package com.example.nextseguros.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -44,5 +46,9 @@ public class Client {
     @LastModifiedDate
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "client")
+    private List<House> houses;
 
 }
