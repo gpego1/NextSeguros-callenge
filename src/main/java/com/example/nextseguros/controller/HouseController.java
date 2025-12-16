@@ -36,7 +36,7 @@ public class HouseController {
 
     @PutMapping("/{id}")
     @ResponseStatus(value = HttpStatus.OK)
-    public House updateHouse(@PathVariable Long id, @Valid HouseDTO dto) {
+    public House updateHouse(@PathVariable Long id, @RequestBody @Valid HouseDTO dto) {
         return service.update(id, dto);
     }
 

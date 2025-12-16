@@ -43,10 +43,10 @@ public class HouseDTO {
     public House toEntityUpdate(House house){
         return House.builder()
                 .id(house.getId())
-                .ownershipStatus(this.ownershipStatus)
+                .ownershipStatus(house.getOwnershipStatus())
                 .location(this.location)
                 .zipcode(this.zipcode)
-                .client(house.getClient())
+                .client(this.client)
                 .build();
     }
 }
