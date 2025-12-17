@@ -6,27 +6,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "vehicle")
 @Data
-@Table(name = "house")
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class House {
+@Builder
+public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "ownweship_status")
-    private String ownershipStatus;
+    @Column(name = "brand", length = 50)
+    private String brand;
 
-    @Column(name = "location")
-    private String location;
+    @Column(name = "model", length = 100)
+    private String model;
 
-    @Column(name = "zipcode")
-    private String zipcode;
+    @Column(name = "year")
+    private Integer year;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id")
-    private Client clientHouse;
+    @JoinColumn(name = "clientId")
+    private Client clientVehicle;
 }

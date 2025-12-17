@@ -48,7 +48,15 @@ public class Client {
     private LocalDateTime updatedAt;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "clientHouse")
     private List<House> houses;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "clientVehicle")
+    private List<Vehicle> vehicles;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "clientInsurance")
+    private List<Insurance> insurances;
 
 }

@@ -29,14 +29,14 @@ public class HouseDTO {
     private String zipcode;
 
     @NotNull
-    private Client client;
+    private Client clientHouse;
 
     public House toEntity() {
         return House.builder()
                 .ownershipStatus(this.ownershipStatus)
                 .location(this.location)
                 .zipcode(this.zipcode)
-                .client(this.client)
+                .clientHouse(this.clientHouse)
                 .build();
     }
 
@@ -46,7 +46,7 @@ public class HouseDTO {
                 .ownershipStatus(house.getOwnershipStatus())
                 .location(this.location)
                 .zipcode(this.zipcode)
-                .client(this.client)
+                .clientHouse(house.getClientHouse())
                 .build();
     }
 }
