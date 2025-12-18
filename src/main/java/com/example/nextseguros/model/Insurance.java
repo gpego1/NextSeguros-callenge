@@ -21,8 +21,9 @@ public class Insurance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type", length = 200)
-    private String type;
+    private InsuranceType type;
 
     @Column(name = "risk")
     private Integer risk;
@@ -43,4 +44,12 @@ public class Insurance {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idClient")
     private Client clientInsurance;
+
+
+    public enum InsuranceType{
+        LIFE,
+        DISABILITY,
+        HOME,
+        AUTO;
+    }
 }

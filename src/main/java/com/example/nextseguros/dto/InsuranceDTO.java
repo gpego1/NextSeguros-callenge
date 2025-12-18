@@ -1,6 +1,8 @@
 package com.example.nextseguros.dto;
 import com.example.nextseguros.model.Client;
 import com.example.nextseguros.model.Insurance;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -16,9 +18,10 @@ import java.time.LocalDateTime;
 @Builder
 public class InsuranceDTO {
 
-    @NotBlank
-    @Size(min = 3, max = 50)
-    private String type;
+    //@NotBlank
+    @Enumerated(EnumType.STRING)
+    //@Size(min = 3, max = 50)
+    private Insurance.InsuranceType type;
 
     @NotNull
     private Integer risk;
