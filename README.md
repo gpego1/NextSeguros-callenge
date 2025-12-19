@@ -24,7 +24,7 @@ O projeto simula um cenário real de seguradora, onde o cliente não precisa ent
 
 🧱 Arquitetura e Tecnologias
 
-Java 17
+Java 21
 
 Spring Boot
 
