@@ -1,5 +1,8 @@
 package com.example.nextseguros.controller;
 import com.example.nextseguros.dto.InsuranceDTO;
+import com.example.nextseguros.dto.InsuranceHouseDTO;
+import com.example.nextseguros.dto.InsuranceRequestDTO;
+import com.example.nextseguros.dto.InsuranceVehicleDTO;
 import com.example.nextseguros.model.Client;
 import com.example.nextseguros.model.Insurance;
 import com.example.nextseguros.service.InsuranceService;
@@ -50,18 +53,27 @@ public class InsuranceController {
     }
 
 
-//    @PostMapping("/life")
-//    @ResponseStatus(value = HttpStatus.CREATED)
-//    public Insurance createInsuranceTypeLife(@Valid InsuranceDTO request){
-//        InsuranceDTO dto = new InsuranceDTO();
-//        if(request != null) {
-//            Client clientObj = request.getClientInsurance();
-//            dto.setClientInsurance(clientObj);
-//            dto.setType(Insurance.InsuranceType.LIFE);
-//            return service.create(dto);
-//        }
-//        return null;
-//    }
+    @PostMapping("/life")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Insurance createInsuranceTypeLife(@Valid InsuranceRequestDTO request){
+        return service.createInsuranceLife(request);
+    }
 
+    @PostMapping("/home")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Insurance createInsuranceTypeHome(@Valid InsuranceHouseDTO request){
+        return service.createInsuranceHouse(request);
+    }
+
+    @PostMapping("/disability")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Insurance createInsuranceTypeDisability(@Valid InsuranceRequestDTO request){
+        return service.createInsuranceDisability(request);
+    }
+
+    @PostMapping("/auto")
+    public Insurance createInsuranceTypeAuto(@Valid InsuranceVehicleDTO request){
+        return service.createInsuranceVehicle(request);
+    }
 
 }
