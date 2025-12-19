@@ -17,14 +17,14 @@ import java.util.List;
 public class InsuranceHouseDTO {
 
     @NotNull
-    private List<Boolean> risk_questions;
+    private List<Boolean> riskQuestions;
     @Size(min = 0, max = 100)
     private String observation;
     @NotNull
     @Min(1)
-    private long client_id;
+    private Long clientId;
 
     @NotNull
     @Min(1)
-    private long house_id;
+    private Long houseId;
 }

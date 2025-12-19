@@ -16,12 +16,12 @@ import java.util.List;
 public class InsuranceRequestDTO {
 
     @NotNull
-    private List<Boolean> risk_questions;
+    private List<Boolean> riskQuestions;
 
     @Size(min = 0, max = 100)
     private String observation;
 
     @NotNull
     @Min(1)
-    private long client_id;
+    private Long clientId;
 }

@@ -45,10 +45,10 @@ public class InsuranceService {
     }
 
     public Insurance createInsuranceVehicle(InsuranceVehicleDTO dto) {
-        Client client = clientRepository.findById(dto.getClient_id()).orElse(null);
-        Vehicle vehicle = vehicleRepository.findById(dto.getVehicle_id()).orElse(null);
+        Client client = clientRepository.findById(dto.getClientId()).orElse(null);
+        Vehicle vehicle = vehicleRepository.findById(dto.getVehicleId()).orElse(null);
         if (client != null && (vehicle != null && client.getVehicles().contains(vehicle))) {
-            int risk = this.calculateRiskVehicle(dto.getRisk_questions(), client, vehicle);
+            int risk = this.calculateRiskVehicle(dto.getRiskQuestions(), client, vehicle);
             Insurance insurance = Insurance.builder()
                     .clientInsurance(client)
                     .type(Insurance.InsuranceType.AUTO)
@@ -64,10 +64,10 @@ public class InsuranceService {
     }
 
     public Insurance createInsuranceHouse(InsuranceHouseDTO dto) {
-        Client client = clientRepository.findById(dto.getClient_id()).orElse(null);
-        House house = houseRepository.findById(dto.getHouse_id()).orElse(null);
+        Client client = clientRepository.findById(dto.getClientId()).orElse(null);
+        House house = houseRepository.findById(dto.getHouseId()).orElse(null);
         if(client != null && (house != null && client.getHouses().contains(house))) {
-            int risk = this.calculateRiskHouse(dto.getRisk_questions(), client, house);
+            int risk = this.calculateRiskHouse(dto.getRiskQuestions(), client, house);
             Insurance insurance = Insurance.builder()
                     .clientInsurance(client)
                     .type(Insurance.InsuranceType.HOME)
@@ -83,9 +83,9 @@ public class InsuranceService {
     }
 
     public Insurance createInsuranceDisability(InsuranceRequestDTO requestDTO) {
-        Client client = clientRepository.findById(requestDTO.getClient_id()).orElse(null);
+        Client client = clientRepository.findById(requestDTO.getClientId()).orElse(null);
         if (client.getId() != null && client.getIncome() > 0) {
-            int risk = this.calculateRiskDisability(requestDTO.getRisk_questions(), client);
+            int risk = this.calculateRiskDisability(requestDTO.getRiskQuestions(), client);
             Insurance insurance = Insurance.builder()
                     .clientInsurance(client)
                     .type(Insurance.InsuranceType.DISABILITY)
@@ -101,9 +101,9 @@ public class InsuranceService {
     }
 
     public Insurance createInsuranceLife(InsuranceRequestDTO requestDTO) {
-        Client client = clientRepository.findById(requestDTO.getClient_id()).orElse(null);
+        Client client = clientRepository.findById(requestDTO.getClientId()).orElse(null);
         if (client.getId() != null && client.getAge() < 60) {
-            int risk = this.calculateRiskLife(requestDTO.getRisk_questions(), client);
+            int risk = this.calculateRiskLife(requestDTO.getRiskQuestions(), client);
             Insurance insurance = Insurance.builder()
                     .clientInsurance(client)
                     .type(Insurance.InsuranceType.LIFE)

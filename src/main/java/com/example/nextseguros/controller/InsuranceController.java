@@ -55,24 +55,24 @@ public class InsuranceController {
 
     @PostMapping("/life")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Insurance createInsuranceTypeLife(@Valid InsuranceRequestDTO request){
+    public Insurance createInsuranceTypeLife(@Valid @RequestBody InsuranceRequestDTO request){
         return service.createInsuranceLife(request);
     }
 
     @PostMapping("/home")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Insurance createInsuranceTypeHome(@Valid InsuranceHouseDTO request){
+    public Insurance createInsuranceTypeHome(@Valid @RequestBody InsuranceHouseDTO request){
         return service.createInsuranceHouse(request);
     }
 
     @PostMapping("/disability")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Insurance createInsuranceTypeDisability(@Valid InsuranceRequestDTO request){
+    public Insurance createInsuranceTypeDisability(@Valid @RequestBody InsuranceRequestDTO request){
         return service.createInsuranceDisability(request);
     }
 
     @PostMapping("/auto")
-    public Insurance createInsuranceTypeAuto(@Valid InsuranceVehicleDTO request){
+    public Insurance createInsuranceTypeAuto(@Valid @RequestBody InsuranceVehicleDTO request){
         return service.createInsuranceVehicle(request);
     }
 
