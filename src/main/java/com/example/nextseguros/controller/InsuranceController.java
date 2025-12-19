@@ -1,10 +1,12 @@
 package com.example.nextseguros.controller;
 import com.example.nextseguros.dto.InsuranceDTO;
+import com.example.nextseguros.model.Client;
 import com.example.nextseguros.model.Insurance;
 import com.example.nextseguros.service.InsuranceService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +49,19 @@ public class InsuranceController {
         service.delete(id);
     }
 
+
+//    @PostMapping("/life")
+//    @ResponseStatus(value = HttpStatus.CREATED)
+//    public Insurance createInsuranceTypeLife(@Valid InsuranceDTO request){
+//        InsuranceDTO dto = new InsuranceDTO();
+//        if(request != null) {
+//            Client clientObj = request.getClientInsurance();
+//            dto.setClientInsurance(clientObj);
+//            dto.setType(Insurance.InsuranceType.LIFE);
+//            return service.create(dto);
+//        }
+//        return null;
+//    }
 
 
 }

@@ -48,7 +48,7 @@ public class InsuranceDTO {
                 .analysis(this.analysis)
                 .observation(this.observation)
                 .createdAt(LocalDateTime.now())
-                .validateAt(this.validateAt)
+                .validateAt(LocalDateTime.now().plusDays(30))
                 .clientInsurance(this.clientInsurance)
                 .build();
     }
